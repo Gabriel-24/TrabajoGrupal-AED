@@ -1,3 +1,6 @@
-1.Sanchez Ignacio Gabriel
-2.Iban
-3.Florencia
+1.Sanchez, Ignacio Gabriel
+Correo:
+2.Albarracin, Iban Exequiel
+Correo: 
+3.Soria, Florencia Abigail
+Correo: florencia.soria@alu.frt.utn.edu.ar
