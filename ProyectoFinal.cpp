@@ -1,6 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+//#include<milibreria.h>
+
+struct usuario
+{
+	char Nameusuario[20]; 
+	char ApyName[50];
+	char codigo[50];
+};
+struct fecha
+{
+	int dia;
+	int mes;
+	int anio;
+};
+struct mascota
+{
+	char ApeyName[50];
+	char domi[50];
+	char localidad[50];
+	fecha nacimiento;
+	float peso;
+	int DNI;
+	char celular[20];
+};
+struct veterinario
+{
+	char ApyName[50];
+	char celular[20];
+	int DNI;
+	int matricula;
+};
+struct turno
+{
+	int matricula;
+	int DNI;
+	fecha diaturno;
+	char descripcion[400];
+};
 
 
 typedef char cadena[32];
