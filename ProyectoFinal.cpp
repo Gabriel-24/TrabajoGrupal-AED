@@ -46,7 +46,12 @@ typedef char cadena[32];
 
 bool validarPass(cadena pass);
 bool validarConsecutivasPass(cadena pass);
-
+bool inciarsesion(usuario usuar[50], int *Plongusu);
+void NuevoUsuario(FILE*usu);
+void MemoryUser(FILE *usu, usuario usuar[50], int *Plongusu);
+void MemoryVet(FILE *vet,veterinario veter[50],int *Plongvet);
+void MemoryMasc(FILE *masc, mascota masco[50],int *Plongmasc);
+void MemoryTur(FILE *tur,turno turn[50],int *Plongtur);
 
 main()
 {
@@ -119,7 +124,135 @@ bool validarConsecutivasPass(cadena pass){
 	return letrasCons < 2;
 }
 	
+bool inciarsesion(usuario usuar[50], int *Plongusu)
+{
+	bool resul = false;
+	int opc; 
 	
+	printf("\n***********************************");
+	printf("\n***********************************");
+	printf("\n***Modulo de inicio de sesion******");
+	printf("\n***********************************");
+	printf("\n***********************************");
+	printf("\n 1) INICIAR SESION");
+	printf("\n");
+	printf("\n 2) SALIR..");
+	printf("\n");
+	printf("\n Elija una opcion: ");
+	scanf("%d", &opc);
+	
+	if(opc==1)
+	{
+		system("cls");
+		usuario inicio;
+		
+		printf("\n-Nombre de usuario: ");
+		scanf("%s",&inicio.Nameusuario);
+		
+		printf("\n-Contrasenia: ");
+		scanf("%s",&inicio.codigo);
+		
+			for(int i=0;i<*Plongusu;i++)
+		{
+		
+			if(strcmp(inicio.Nameusuario,usuar[i].Nameusuario)==0 && strcmp(inicio.codigo,usuar[i].codigo)==0)
+			{
+				resul=true;
+			}
+		}
+	}
+	if(opc==2)
+	{
+		printf("Cerrando sesion...");
+	}
+	return resul;
+}
+void NuevoUsuario(FILE*usu)
+{
+	usuario nuevoU;
+	usu=fopen("usuar.dat", "a+b");
+	
+	if(usu==NULL)
+	{
+		printf("NO SE PUEDE ABRIR EL ARCHIVO.");
+	}
+	else
+	{
+		printf("\n-Nombre del usuario: ");
+		scanf("%s",&nuevoU.Nameusuario);
+		printf("\n-Contraseña: ");
+		scanf("%s",&nuevoU.codigo);
+		printf("\n-Apellido y Nombre: ");
+		scanf("%s",&nuevoU.ApyName);
+		
+		fwrite(&nuevoU,sizeof(usuario),1,usu);
+	}
+	fclose(usu);
+}
+
+void MemoryUser(FILE *usu, usuario usuar[50], int *Plongusu)
+{
+	usu=fopen("usuar.dat","a+b");
+	
+	while(!feof(usu))
+	{
+		fread(&usuar[*Plongusu],sizeof(usuario),1,usu);
+		*Plongusu=*Plongusu+1;
+	}
+	*Plongusu=*Plongusu-1;
+	fclose(usu);
+}
+
+void MemoryVet(FILE *vet,veterinario veter[50],int *Plongvet)
+{
+	vet=fopen("veter.dat","a+b");
+	
+	while(!feof(vet))
+	{
+		fread(&veter[*Plongvet],sizeof(veterinario),1,vet);
+		*Plongvet=*Plongvet+1;
+	}
+	*Plongvet=*Plongvet-1;
+	fclose(vet);
+}
+
+void MemoryMasc(FILE *masc, mascota masco[50],int *Plongmasc)
+{
+	masc=fopen("masco.dat","a+b");
+	
+	while(!feof(masc))
+	{
+		fread(&masco[*Plongmasc],sizeof(mascota),1,masc);
+		*Plongmasc=*Plongmasc+1;
+	}
+	*Plongmasc=*Plongmasc-1;
+	fclose(masc);
+}
+
+void MemoryTur(FILE *tur,turno turn[50],int *Plongtur)
+{
+	tur=fopen("turnos.dat","a+b");
+	
+	while(!feof(tur))
+	{
+		fread(&turn[*Plongtur],sizeof(turno),1,tur);
+		*Plongtur=*Plongtur+1;
+	}
+	*Plongtur=*Plongtur-1;
+	fclose(tur);
+}
+
+void GuardarUser(FILE *usu, usuario usuar[50], int *Plongusu)
+{
+	usu=fopen("usuar.dat","wb");
+	
+	for(int i=0;i<*Plongusu;i++)
+	{
+		fwrite(&usuar[i],sizeof(usuario),1,usu);
+	}
+		
+	fclose(usu);
+}
 	
 	
 	
