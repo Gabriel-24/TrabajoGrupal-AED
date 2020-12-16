@@ -53,6 +53,13 @@ void MemoryVet(FILE *vet,veterinario veter[50],int *Plongvet);
 void MemoryMasc(FILE *masc, mascota masco[50],int *Plongmasc);
 void MemoryTur(FILE *tur,turno turn[50],int *Plongtur);
 void GuardarUser(FILE *usu, usuario usuar[50], int *Plongusu);
+void GuardarVet(FILE *vet,veterinario veter[50],int *Plongvet);
+void GuardarMasc(FILE *masc, mascota masco[50],int *Plongmasc);
+void GuardarTur(FILE *tur,turno turn[50],int *Plongtur);
+void AgregarMasc(mascota masco[50],int *Plongmasc);
+void AgregarVet(veterinario veter[50],int *Plongvet);
+void AgregarTurn(turno turn[50],int *Plongtur);
+void AgregarUser(usuario usuar[50],int *Plongusu); 
 main()
 {
 	int opcion;
@@ -253,6 +260,44 @@ void GuardarUser(FILE *usu, usuario usuar[50], int *Plongusu)
 		
 	fclose(usu);
 }
+void GuardarVet(FILE *vet,veterinario veter[50],int *Plongvet)
+{
+	vet=fopen("veter.dat","wb");
+	
+	for(int i=0;i<*Plongvet;i++)
+	{
+		fwrite(&veter[i],sizeof(veterinario),1,vet);
+		printf("\nNombre: %s valor: %d",veter[i].ApyName,i);
+	}
+		
+	fclose(vet);
+}
+
+void GuardarMasc(FILE *masc, mascota masco[50],int *Plongmasc)
+{
+	masc=fopen("masco.dat","wb");
+	
+	for(int i=0;i<*Plongmasc;i++)
+	{
+		fwrite(&masco[i],sizeof(mascota),1,masc);
+		printf("\nNombre: %s valor: %d",masco[i].ApeyName,i);
+	}
+		
+	fclose(masc);
+}
+
+void GuardarTur(FILE *tur,turno turn[50],int *Plongtur)
+{
+	tur=fopen("turn.dat","wb");
+	
+	for(int i=0;i<*Plongtur;i++)
+	{
+		fwrite(&turn[i],sizeof(turno),1,tur);
+	}
+		
+	fclose(tur);
+}
+
 void AgregarMasc(mascota masco[50],int *Plongmasc)
 {
 	printf("\n-Nombre de la mascota: ");
