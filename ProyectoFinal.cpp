@@ -253,6 +253,79 @@ void GuardarUser(FILE *usu, usuario usuar[50], int *Plongusu)
 		
 	fclose(usu);
 }
+void AgregarMasc(mascota masco[50],int *Plongmasc)
+{
+	printf("\n-Nombre de la mascota: ");
+	scanf("%s",&masco[*Plongmasc].ApeyName);
+	
+	printf("\n-Domicilio: ");
+	scanf("%s",&masco[*Plongmasc].domi);
+	
+	printf("\n-DNI del dueño: ");
+	scanf("%d",&masco[*Plongmasc].DNI);
+	
+	printf("\n-Localidad: ");
+	scanf("%s",&masco[*Plongmasc].localidad);
+	
+	printf("\n-Fecha de nacimiento: ");
+	printf("\n-Dia: ");
+	scanf("%d",&masco[*Plongmasc].nacimiento.dia);
+	printf("\n-Mes: ");
+	scanf("%d",&masco[*Plongmasc].nacimiento.mes);
+	printf("\n-Anio: ");
+	scanf("%d",&masco[*Plongmasc].nacimiento.anio);
+	*Plongmasc=*Plongmasc+1;
+}
+
+void AgregarVet(veterinario veter[50],int *Plongvet)
+{
+	printf("\n-Apellido y Nombre: ");
+	scanf("%s",&veter[*Plongvet].ApyName);
+	
+	printf("\n-Ingrese la matricula: ");
+	scanf("%d",&veter[*Plongvet].matricula);
+	
+	printf("\n-DNI: ");
+	scanf("%d",&veter[*Plongvet].DNI);
+	
+	printf("\n-Celular: ");
+	scanf("%s",&veter[*Plongvet].celular);
+	*Plongvet=*Plongvet+1;
+}
+
+void AgregarTurn(turno turn[50],int *Plongtur)
+{
+	printf("\n-Matricula: ");
+	scanf("%d",&turn[*Plongtur].matricula);
+	
+	printf("\n-Fecha del turno:");
+	printf("\n-Dia: ");
+	scanf("%d",&turn[*Plongtur].diaturno.dia);
+	printf("\n-Mes: ");
+	scanf("%d",&turn[*Plongtur].diaturno.mes);
+	printf("\n-Anio: ");
+	scanf("%d",&turn[*Plongtur].diaturno.anio);
+	
+	printf("\n-DNI del dueño: ");
+	scanf("%d",&turn[*Plongtur].DNI);
+	
+	printf("\n-Descripcion de la cita: ");
+	scanf("%s",&turn[*Plongtur].descripcion);
+	*Plongtur=*Plongtur+1;
+}
+
+void AgregarUser(usuario usuar[50],int *Plongusu)
+{
+	printf("\n-Nombre del usuario: ");
+	scanf("%s",&usuar[*Plongusu].Nameusuario);
+	
+	printf("\n-Contraseña: ");
+	scanf("%s",&usuar[*Plongusu].codigo);
+	
+	printf("\n-Apellido y Nombre: ");
+	scanf("%s",&usuar[*Plongusu].ApyName);
+	*Plongusu=*Plongusu+1;
+}
 	
 	
 	
