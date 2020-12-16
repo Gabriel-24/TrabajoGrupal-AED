@@ -52,7 +52,7 @@ void MemoryUser(FILE *usu, usuario usuar[50], int *Plongusu);
 void MemoryVet(FILE *vet,veterinario veter[50],int *Plongvet);
 void MemoryMasc(FILE *masc, mascota masco[50],int *Plongmasc);
 void MemoryTur(FILE *tur,turno turn[50],int *Plongtur);
-
+void GuardarUser(FILE *usu, usuario usuar[50], int *Plongusu);
 main()
 {
 	int opcion;
