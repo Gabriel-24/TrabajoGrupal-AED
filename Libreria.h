@@ -59,3 +59,17 @@ int modadmin();
 
 void funcvet(veterinario v,FILE *vet);
 void funcus(usuario u,FILE *user);
+void funcat(turnos t,veterinario v, char auxvet[80],FILE *tur ,FILE *vet);
+
+void funcrank(FILE *tur , FILE *vet , turnos t , veterinario v);
+
+
+void login (FILE *user , usuario u);
+void regi_masc(FILE *mas , mascota m);
+void turno_masc(FILE *mas ,FILE *tur , FILE *vet , turnos t , veterinario v, mascota m);
+void List_aten_vet(FILE *vet , FILE *tur , FILE *mas , veterinario v , turnos t , mascota m );
+
+
+int Datos (FILE *vet, veterinario v, char pass[10]);
+void Turnos (FILE *tur, FILE *vet, FILE *mas, veterinario v, turnos t, mascota m , int matri);
+void Evo (FILE *tur, turnos t);
