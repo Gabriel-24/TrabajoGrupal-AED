@@ -1131,3 +1131,128 @@ void funcrank(FILE *tur , FILE *vet , turnos t , veterinario v)
 		
 	}
 }
+int Datos (FILE *vet, veterinario v, char pass[10])
+{
+
+   	int  matm;
+	bool band;	
+	
+			vet= fopen("Veterinarios.dat","r+b");
+			system("cls");
+			printf("INICIO DE SESION");
+			printf("\nIngrese su matricula: ");
+			scanf("%d",&matm);
+			fread(&v,sizeof(veterinario),1,vet);
+			band=false;
+			
+			while(band==false)
+			{
+				while(!feof(vet))
+				{
+					if(matm==v.matricula)
+					{
+						band=true;
+						fread(&v,sizeof(veterinario),1,vet);
+					}
+					else
+					{
+						fread(&v,sizeof(veterinario),1,vet);
+					}
+				
+				}
+				rewind(vet);
+				if(band==false)
+				{
+					printf("\nMatricula incorrecta, por favor ingrese su matricula de nuevo: ");
+					scanf("%d",&matm);
+				}
+				
+			}
+			printf("\nMatricula aceptada, ingrese su contraseña: ");
+			_flushall();
+			gets(pass);
+			rewind(vet);
+			fread(&v,sizeof(veterinario),1,vet);
+			band=false;
+			while(band==false)
+			{
+				while(!feof(vet))
+				{
+					if(strcmp(pass,v.contrasenia)==0)
+					{
+						band=true;
+						fread(&v,sizeof(veterinario),1,vet);
+					}
+					else
+					{
+						fread(&v,sizeof(veterinario),1,vet);
+					}
+				}
+				rewind(vet);
+				if(band==false)
+				{
+					printf("\nContraseña incorrecta, por favor ingrese su contraseña de nuevo: ");
+					_flushall();
+					gets(pass);
+				}
+			}
+			
+			printf("\nContraseña aceptada\nSesion iniciada con exito!");
+			fclose(vet);
+			
+			
+			return matm;
+}
+void Turnos (FILE *tur, FILE *vet, FILE *mas, veterinario v, turnos t, mascota m , int matri)
+{
+	int i= 1;
+	tur=fopen("turnos.dat","r+b");
+	vet=fopen("Veterinarios.dat","r+b");
+	
+	rewind(tur);
+	
+	fread(&t,sizeof(turnos),1,tur);
+	
+	while(!feof(tur))
+	{
+
+		if(matri == t.mat)
+		{
+		
+			printf("\n Turno numero %d \n" , i);
+			printf("\n --------- \n");
+			printf("\nFecha:");
+			printf("\n\tDia: %d", t.fec.dia);
+			printf("\n\tMes: %d", t.fec.mes);
+			printf("\n\tA%co: %d",164, t.fec.anio);
+			printf("\nDNI del dueño: %d", t.dni);
+			printf("\nNombre y Apellido del dueño: %s", t.apynom);
+			printf("\n --------- \n");
+			i++;
+			
+			fread(&t,sizeof(turnos),1,tur);
+		}
+		else
+		{
+		
+			fread(&t,sizeof(turnos),1,tur);	
+		
+		}		
+
+	}
+				
+				
+}
+void Evo (FILE *tur, turnos t)
+{
+    int op;
+
+    tur=fopen("turnos.dat","r+b");
+    
+    _flushall();
+    printf("\nRegistre la evolucion de la mascota: ");
+    gets(t.detalle);
+    printf ("\nSe registro con exito el avance de su mascota\n");
+    fwrite(&t, sizeof(turnos), 1,tur);
+
+}
